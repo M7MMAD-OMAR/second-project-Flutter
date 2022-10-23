@@ -41,15 +41,6 @@ class _MyHomePage extends State<MyHomePage> {
     Person(name: "ali", age: 40, height: 188),
     Person(name: "ali", age: 80, height: 190),
     Person(name: "ali", age: 30, height: 300),
-    Person(name: "ali", age: 40, height: 188),
-    Person(name: "ali", age: 80, height: 190),
-    Person(name: "ali", age: 30, height: 300),
-    Person(name: "ali", age: 40, height: 188),
-    Person(name: "ali", age: 80, height: 190),
-    Person(name: "ali", age: 30, height: 300),
-    Person(name: "ali", age: 40, height: 188),
-    Person(name: "ali", age: 80, height: 190),
-    Person(name: "ali", age: 30, height: 300),
   ];
 
   void bottomSheet (BuildContext context) {
@@ -75,7 +66,6 @@ class _MyHomePage extends State<MyHomePage> {
       );
     });
   }
-
 
   @override
   Widget build(BuildContext context) {

@@ -42,7 +42,6 @@ class _MyHomePage extends State<MyHomePage> {
     Person(name: "ali", age: 80, height: 190),
     Person(name: "ali", age: 30, height: 300),
   ];
-
   void bottomSheet (BuildContext context) {
     showModalBottomSheet(context: context, builder: (_){
       return ListView.builder(
@@ -66,7 +65,6 @@ class _MyHomePage extends State<MyHomePage> {
       );
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

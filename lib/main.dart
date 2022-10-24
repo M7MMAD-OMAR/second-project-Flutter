@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
       routes: {
+        '/' : (context) => MyHomePage(),
         'pageOne' : (context) => Page1(),
-
       },
     );
   }
@@ -43,10 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               child: Text("First Page"),
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Page1(),
-                  ),
+                Navigator.of(context).pushNamed(
+                  'pageOne',
                 );
               },
             ),

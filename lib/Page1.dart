@@ -19,11 +19,8 @@ class _Page1State extends State<Page1> {
       ),
       body: InkWell(
         child: Text("Go to Page 2"),
-        onTap: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) {
-            return Page2();
-          }
-          ),
+        onTap: () => Navigator.of(context).pushReplacementNamed(
+          '/',
         ),
       ),
     );

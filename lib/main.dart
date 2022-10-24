@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
+      routes: {
+        'pageOne' : (context) => Page1(),
+
+      },
     );
   }
 }
@@ -39,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               child: Text("First Page"),
               onTap: () {
-                Navigator.of(context).pushReplacement(
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => Page1(),
                   ),
@@ -49,11 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               child: Text("Second Page"),
               onTap: (){
-                Navigator.of(context).pushReplacement(
+                Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => Page2())
                 );
               },
-            )
+            ),
           ],
         ),
       ),

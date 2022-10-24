@@ -78,7 +78,7 @@ class _MyHomePage extends State<MyHomePage> {
       ),
       body: Container(
         child: Image.network(
-          "https://th.bing.com/th/id/OIP.J8uktCRVET2arbFcH_PivwHaE6?pid=ImgDet&rs=1",
+          "assets/images/1.png",
           height: double.infinity,
         fit: BoxFit.fill,),
       ),

@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
       routes: {
-        '/home' : (context) => MyHomePage(),
         'pageOne' : (context) => Page1(),
       },
     );
@@ -45,6 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context).pushNamed(
                   'pageOne',
+                  arguments: {
+                    'age': 33,
+                    'name': 'ali',
+                  }
                 );
               },
             ),

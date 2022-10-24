@@ -36,6 +36,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePage extends State<MyHomePage> {
   // theme
   var green = Colors.green;
+  late DateTime _selectedDate = DateTime.now();
+
+
 
   List<Person> list = [
     Person(name: "ali", age: 40, height: 188),
@@ -70,6 +73,19 @@ class _MyHomePage extends State<MyHomePage> {
         });
   }
 
+  void _ShowDateDialog() {
+    showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2015, 1, 15),
+        lastDate: DateTime.now()
+    ).then((value) =>
+        setState((){
+          value == null ? null : _selectedDate = value;
+        })
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,10 +93,10 @@ class _MyHomePage extends State<MyHomePage> {
         title: const Text("Flutter App"),
       ),
       body: Container(
-        child: Image.network(
-          "assets/images/1.png",
-        height: double.infinity,
-        fit: BoxFit.fitHeight,
+        alignment: Alignment.center,
+        child: ElevatedButton(
+          onPressed: _ShowDateDialog,
+          child:  Text("$_selectedDate"),
         ),
       ),
     );

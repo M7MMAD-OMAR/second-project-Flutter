@@ -43,6 +43,7 @@ class _MyHomePage extends State<MyHomePage> {
     Person(name: "ali", age: 30, height: 300),
   ];
 
+  // button sheet
   void bottomSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -76,11 +77,10 @@ class _MyHomePage extends State<MyHomePage> {
         title: const Text("Flutter App"),
       ),
       body: Container(
-        alignment: Alignment.center,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => bottomSheet(context),
-        child: const Icon(Icons.add, color: Colors.white),
+        child: Image.network(
+          "https://th.bing.com/th/id/OIP.J8uktCRVET2arbFcH_PivwHaE6?pid=ImgDet&rs=1",
+          height: double.infinity,
+        fit: BoxFit.fill,),
       ),
     );
   }

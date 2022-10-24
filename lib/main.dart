@@ -79,8 +79,9 @@ class _MyHomePage extends State<MyHomePage> {
       body: Container(
         child: Image.network(
           "assets/images/1.png",
-          height: double.infinity,
-        fit: BoxFit.fill,),
+        height: double.infinity,
+        fit: BoxFit.fitHeight,
+        ),
       ),
     );
   }

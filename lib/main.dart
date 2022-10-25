@@ -13,9 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
-      routes: {
-        'pageOne' : (context) => Page1(),
-      },
     );
   }
 }
@@ -30,37 +27,44 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Main Screen"),
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            InkWell(
-              child: Text("First Page"),
-              onTap: () {
-                Navigator.of(context).pushNamed(
-                  'pageOne',
-                  arguments: {
-                    'age': 33,
-                    'name': 'ali',
-                  }
-                );
-              },
-            ),
-            InkWell(
-              child: Text("Second Page"),
-              onTap: (){
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Page2())
-                );
-              },
-            ),
-          ],
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        drawerScrimColor: Colors.grey.withOpacity(0.8),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text(
+                  "Person Name",
+                  style: TextStyle(fontSize: 18),
+                ),
+                subtitle: Text("Hi I'm sub title"),
+                trailing: Icon(Icons.person),
+              )
+            ],
+          ),
         ),
+        appBar: AppBar(
+          title: const Text("Main Screen"),
+          bottom: TabBar(
+            tabs: <Widget> [
+              Tab(icon: Icon(Icons.account_balance),text: "Account Balance",
+             ),
+              Tab(icon: Icon(Icons.account_balance_wallet), text: "Accouont Balance Wallet",
+             ),
+              Tab(icon: Icon(Icons.add_alert), text: "Add Alert",
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            Text("First Page"),
+            Text("Second Page"),
+            Page1(),
+          ],
+        )
       ),
     );
   }

@@ -25,6 +25,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  List<Widget> _listPages = [
+    Scaffold(
+        body: Text("First Page"),
+      ),
+    Scaffold(
+      body: Text("Second Page"),
+    ),
+  ];
+
+  late int _selectedPage = 0;
+
+  void _changePage(int index) {
+    setState(() {
+      _selectedPage = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -47,25 +65,24 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         appBar: AppBar(
           title: const Text("Main Screen"),
-          bottom: TabBar(
-            tabs: <Widget> [
-              Tab(icon: Icon(Icons.account_balance),text: "Account Balance",
-             ),
-              Tab(icon: Icon(Icons.account_balance_wallet), text: "Accouont Balance Wallet",
-             ),
-              Tab(icon: Icon(Icons.add_alert), text: "Add Alert",
-              ),
-            ],
-          ),
         ),
-        body: TabBarView(
-          children: [
-            Text("First Page"),
-            Text("Second Page"),
-            Page1(),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.green,
+          selectedItemColor: Colors.green,
+          unselectedItemColor: Colors.black,
+          selectedFontSize: 10,
+          unselectedFontSize: 10,
+          type: BottomNavigationBarType.shifting,
+          onTap: _changePage,
+          currentIndex: _selectedPage,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.add_alert,), label: "Add"),
+            BottomNavigationBarItem(icon: Icon(Icons.remove_circle,), label: "Remove"),
           ],
-        )
-      ),
+
+        ),
+        body: _listPages[_selectedPage],
+        ),
     );
   }
 }

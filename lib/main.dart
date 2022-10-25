@@ -29,9 +29,6 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void tempAnswer() {
-    if(indexQuestion == questionsAndAnswers.length-1) {
-      indexQuestion = -1;
-    }
     setState(() => ++indexQuestion);
   }
 
@@ -43,7 +40,8 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text("AppBar Testing"),
         ),
-        body: Column(
+        body: indexQuestion < questionsAndAnswers.length ?
+        Column(
           children: [
             Question(
               question:
@@ -53,7 +51,8 @@ class _MyAppState extends State<MyApp> {
               return Answer(titleAnswer: answer, funAnswer: tempAnswer);
             }),
           ],
-        ),
+        )
+        : Text("Done!"),
       ),
     );
   }

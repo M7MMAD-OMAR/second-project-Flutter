@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 class Answer extends StatelessWidget {
   late String titleAnswer;
   late Function() funAnswer;
-  Answer({Key? key, required this.titleAnswer, required this.funAnswer}) : super(key: key);
+
+
+  Answer({Key? key, required this.titleAnswer, required this.funAnswer,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

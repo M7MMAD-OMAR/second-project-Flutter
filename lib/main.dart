@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/answer.dart';
-import 'package:second_project/question.dart';
+import 'package:second_project/quiz.dart';
+import 'package:second_project/reset.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,26 +11,10 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  late int indexQuestion = 0;
-  late List<Map<String, Object>> questionsAndAnswers = [
-    {
-      'question': "How Are You",
-      'answers': ["Fine", "Fuck", "nice"],
-    },
-    {
-      'question': "What Do You Do",
-      'answers': ["Playing", "Fat boll", "bastBoll", "Cocking"],
-    },
-    {
-      'question': "What Do You Do Eating Dog!!1",
-      'answers': ["Playing", "Cocking"],
-    }
-  ];
+Color black = Colors.black;
+Color white = Colors.white;
 
-  void tempAnswer() {
-    setState(() => ++indexQuestion);
-  }
+class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +23,39 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text("AppBar Testing"),
-        ),
-        body: indexQuestion < questionsAndAnswers.length ?
-        Column(
-          children: [
-            Question(
-              question:
-                  questionsAndAnswers[indexQuestion]['question'] as String,
+          actions: [
+            Switch(
+              value: isSwitch,
+              onChanged: (value) {
+                setState(() {
+                  isSwitch = value;
+                  if (isSwitch) {
+                    black = Colors.white;
+                    white = Colors.black;
+                  }
+                  if (!isSwitch) {
+                    black = Colors.black;
+                    white = Colors.white;
+                  }
+                });
+              },
+              // thumbColor: MaterialStateProperty.all(Colors.purple),
+              activeColor: Colors.green,
+              inactiveThumbColor: Colors.black,
+              inactiveTrackColor: Colors.white,
             ),
-            ...(questionsAndAnswers[indexQuestion]['answers'] as List<String>).map((answer){
-              return Answer(titleAnswer: answer, funAnswer: tempAnswer);
-            }),
           ],
-        )
-        : Text("Done!"),
+        ),
+        body: Container(
+          color: white,
+          child: indexQuestion < questionsAndAnswers.length
+              ? Quiz(
+            questionAndAnswer: questionsAndAnswers,
+            indexQuestion: indexQuestion,
+            tempAnswer: tempAnswer,
+          )
+              : Reset(funReset: resetApp, score: totalScore),
+        ),
       ),
     );
   }

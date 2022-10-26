@@ -20,13 +20,25 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("AppBar Testing"),
-        ),
-        body: Container(
+      home: MyHomePage(),
+    );
+  }
+}
 
-        ),
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  var url = "https://youtube.com";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ElevatedButton(
+        child: Text("Button"),
+        onPressed: () {
+
+
+        },
       ),
     );
   }
